@@ -1,8 +1,8 @@
+// author_stud_id: 2110583
 #include <stdio.h>
 #include <stdlib.h>
 #include "binaryTree.h"
 
-// add errors :D
 void deleteTreeNodes(node *node);
 void insert(node **root, int value, int* isTaller, int *error);
 void rotateLeft(node **root);
@@ -70,15 +70,15 @@ void insert(node **root, int value, int* isTaller, int *error){
             insert(&(*root)->right, value, &isSubTreeTaller, error);
             if(isSubTreeTaller){
                 switch((*root)->balance){
-                    case -1:
+                    case -1: //left heavy
                         (*root)->balance = 0;
                         *isTaller = 0;
                         return;
-                    case 0:
+                    case 0: //balanced
                         (*root)->balance = 1;
                         *isTaller = 1;
                         return;
-                    case 1:
+                    case 1: //right heavy
                         balanceRight(root);
                         *isTaller = 0;
                         return;
